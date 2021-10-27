@@ -1,4 +1,4 @@
-class ApplicationDTO{
+public class ApplicationDTO{
 	String appName;
 	String appType;
 	int appSize;

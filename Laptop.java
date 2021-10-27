@@ -21,7 +21,36 @@ class Laptop{
 	}
 	public void printDetails(){
 		for(int i = 0; i<os.length; i++){
-			System.out.println(os[i].getOsName()+ ", "+os[i].getOsSize()+ ", "+os[i].getGammingExperince());
+			if(os[i] != null){
+				System.out.println(os[i].getOsName()+ ", "+os[i].getOsSize()+ ", "+os[i].getGammingExperince());
+			}
+			
 		}
+	}
+	public boolean updategammingByName(String name, String game){
+		System.out.println("Inside updategammingByName()");
+		boolean isUpdate = false;
+		for(int i = 0; i < os.length; i++){
+			if(os[i] != null){
+				if(os[i].getOsName().equals(name)){
+					os[i].setGammingExperience(game);
+					isUpdate = true;
+				}
+			}
+		}
+		return isUpdate;
+	}
+	public boolean deleteByName(String name){
+		System.out.println("Inside deleteByName()");
+		boolean isDeleted = false;
+		for(int i = 0; i < os.length; i++){
+			if(os[i] != null){
+				if(os[i].getOsName().equals(name)){
+					os[i] = null;
+					isDeleted = true;
+				}
+			}
+		}
+		return isDeleted;
 	}
 }

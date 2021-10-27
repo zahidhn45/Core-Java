@@ -21,7 +21,44 @@ class Airpot{
 	}
 	public void printDetail(){
 		for(int i = 0; i < terminal.length; i++){
-			System.out.println(terminal[i].getTerminalArea()+ ", "+terminal[i].getDepartureGate()+ ", "+terminal[i].getBaggageCarousels()+ ", "+terminal[i].getPasswordCheckStand());
+			if(terminal[i] != null){
+				System.out.println(terminal[i].getTerminalArea()+ ", "+terminal[i].getDepartureGate()+ ", "+terminal[i].getBaggageCarousels()+ ", "+terminal[i].getPasswordCheckStand());
+			}
+			
 		}
+	}
+	public boolean updateGateByTerminalArea(double terminalArea, int gate){
+		boolean isUpdated = false;
+		System.out.println("Inside updateGateByTerminalArea()");
+		if(terminalArea > 0.0 && gate > 0){
+			System.out.println("Updating Gate");
+			for(int i =0; i<terminal.length; i++){
+				if(terminal[i].getTerminalArea() == terminalArea){
+					terminal[i].setDepartureGate(gate);
+					isUpdated = true;
+				}
+				else{
+					System.out.println("No such record found");
+				}
+			}
+		}
+		return isUpdated;
+	}
+	
+	public boolean deleteByGate(int gate){
+		System.out.println("Inside deleteByGate()");
+		boolean isDeleted = false;
+		for(int i = 0; i < terminal.length; i++){
+			if(terminal[i] != null){
+				if(terminal[i].getDepartureGate() == gate){
+					terminal[i] = null;
+					isDeleted  = true;
+				}
+			}
+			else{
+				System.out.println("Cannot find terminal");
+			}
+		}
+		return isDeleted;
 	}
 }

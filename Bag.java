@@ -20,7 +20,35 @@ class Bag{
 	}
 	public void printDetails(){
 		for(int i = 0; i<book.length;  i++){
-			System.out.println(book[i].getBookId()+ ", "+book[i].getBookName()+  ", "+book[i].getBookPrice()+ ", "+book[i].getBookType());
+			if(book[i] != null){
+				System.out.println(book[i].getBookId()+ ", "+book[i].getBookName()+  ", "+book[i].getBookPrice()+ ", "+book[i].getBookType());
+			}
 		}
+	}
+	public boolean updateBookNameByBookId(String name, int id){
+		System.out.println("Inside updateBookNameByBookId()");
+		boolean isUpdated  = false;
+		for(int i = 0; i < book.length; i++){
+			if(book[i] != null){
+				if(book[i].getBookId() == id){
+					book[i].setBookName(name);
+					isUpdated =  true;
+				}
+			}
+		}
+		return isUpdated;
+	}
+	public boolean deleteById(int id){
+		System.out.println("Inside deleteById");
+		boolean isDeleted = false;
+		for(int i = 0; i< book.length; i++){
+			if(book[i] != null){
+				if(book[i].getBookId() == id){
+					book[i] = null;
+					isDeleted = true;
+				}
+			}
+		}
+		return isDeleted;
 	}
 }

@@ -20,9 +20,39 @@ class Hotel{
 		}
 		return isAdded;
 	}
-	public void getFoodItems(){
+	public void addFoodItems(){
 		for(int i=0; i<foodItems.length;  i++){
-			System.out.println(foodItems[i].getFoodId()+ ", "+foodItems[i].getFoodName()+ ", "+foodItems[i].getFoodPrice()+ ", "+foodItems[i].getFoodType());
+			if(foodItems[i] != null){
+				System.out.println(foodItems[i].getFoodId()+ ", "+foodItems[i].getFoodName()+ ", "+foodItems[i].getFoodPrice()+ ", "+foodItems[i].getFoodType());
+			}
 		}
+	}
+	
+	public boolean updateFoodNameByFoodId(int id,  String name){
+		System.out.println("Inside updateFoodNameByFoodId()");
+		boolean isUpdated =  false;
+		for(int i = 0; i< foodItems.length; i++){
+			if(foodItems[i] != null){
+				if(foodItems[i].getFoodId() == id){
+					foodItems[i].setFoodName(name);
+					isUpdated = true;
+				}
+			}
+		}
+		return isUpdated;
+	}
+	
+	public boolean DeleteByFoodId(int id){
+		System.out.println("Inside DeleteByFoodId()");
+		boolean isDeleted =  false;
+		for(int i = 0; i< foodItems.length; i++){
+			if(foodItems[i] != null){
+				if(foodItems[i].getFoodId() == id){
+					foodItems[i] = null;
+					isDeleted = true;
+				}
+			}
+		}
+		return isDeleted;
 	}
 }

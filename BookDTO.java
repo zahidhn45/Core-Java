@@ -1,8 +1,10 @@
 public class BookDTO{
-	int bookId;
-	String bookName;
-	double bookPrice;
-	String bookType;
+	private int bookId;
+	private String bookName;
+	private double bookPrice;
+	private String bookType;
+	
+
 	
 	public void setBookId(int bookId){
 		this.bookId = bookId;
