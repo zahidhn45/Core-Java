@@ -6,28 +6,34 @@ class ShopUtil{
 		int size = sc.nextInt();
 		
 		Shop shop = new Shop(size);
-		ElectronicDeviceDTO dto  = new ElectronicDeviceDTO();
-		ElectronicDeviceDTO dto1  = new ElectronicDeviceDTO();
 		
-		dto.setDeviceId(123);
-		dto.setDeviceName("AC");
-		dto.setDeviceColor("White");
-		dto.setDevicePrice(1500.00);
+		for(int i = 0; i< size; i++){
+			ElectronicDeviceDTO dto  = new ElectronicDeviceDTO();
+			
+			System.out.println("Enter device id");
+			dto.setDeviceId(sc.nextInt());
+			System.out.println("Enter device Name");
+			dto.setDeviceName(sc.next());
+			System.out.println("Enter device color");
+			dto.setDeviceColor(sc.next());
+			System.out.println("Enter device price");
+			dto.setDevicePrice(sc.nextDouble());
+			
+			shop.addElectronicDevice(dto);
+		}
 		
-		dto1.setDeviceId(456);
-		dto1.setDeviceName("Mobile");
-		dto1.setDeviceColor("Black");
-		dto1.setDevicePrice(45000.00);
-		
-		shop.addElectronicDevice(dto);
-		shop.addElectronicDevice(dto1);
 		shop.printDetails();
 		
-		boolean update = shop.updateDeviceNameByDeviceId(123, "Laptop");
+		System.out.println("Enter device id for which device name is to be updated");
+		int id = sc.nextInt();
+		System.out.println("Enter updated device name");
+		String name = sc.next();
+		boolean update = shop.updateDeviceNameByDeviceId(id, name);
 		System.out.println(update);
 		shop.printDetails();
 		
-		boolean delete = shop.deleteById(456);
+		System.out.println("Enter device id for which an entry has to be deleted");
+		boolean delete = shop.deleteById(sc.nextInt());
 		System.out.println(delete);
 		shop.printDetails();
 	}

@@ -4,32 +4,37 @@ class BankUtil{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter size");
 		int size = sc.nextInt();
-		
 		Bank bank = new Bank(size);
-		AccountDTO dto = new AccountDTO();
-		AccountDTO dto1 = new AccountDTO();
 		
-		dto.setAccountId(1254);
-		dto.setAccountName("Mukesh");
-		dto.setGender("Male");
-		dto.setPhone(1245689756L);
-		dto.setRateOfIntrest(8.5);
+		for(int i = 0; i < size; i++){
+			AccountDTO dto = new AccountDTO();
 		
-		dto1.setAccountId(4563);
-		dto1.setAccountName("Rohima");
-		dto1.setGender("female");
-		dto1.setPhone(1245689756L);
-		dto1.setRateOfIntrest(8.5);
+			System.out.println("Enter Account id");
+			dto.setAccountId(sc.nextInt());
+			System.out.println("Enter Account Name");
+			dto.setAccountName(sc.next());
+			System.out.println("Enter Gender");
+			dto.setGender(sc.next());
+			System.out.println("Enter Phone Number");
+			dto.setPhone(sc.nextLong());
+			System.out.println("Enter Rate of Intrest");
+			dto.setRateOfIntrest(sc.nextDouble());
+			
+			bank.addAccount(dto);
+		}
 		
-		bank.addAccount(dto);
-		bank.addAccount(dto1);
 		bank.printDetails();
 		
-		boolean update = bank.updateAccountNameByAccountId("Rakesh", 1254);
+		System.out.println("Enter Account id for which name is be updated");
+		int id = sc.nextInt();
+		System.out.println("Enter updated name");
+		String name = sc.next();
+		boolean update = bank.updateAccountNameByAccountId(name, id);
 		System.out.println("Update: "+update);
 		bank.printDetails();
 		
-		boolean delete = bank.deleteById(4563);
+		System.out.println("Enter id for which an entry is to be deleted");
+		boolean delete = bank.deleteById(sc.nextInt());
 		System.out.println("Delete: "+delete);
 		bank.printDetails();
 	}

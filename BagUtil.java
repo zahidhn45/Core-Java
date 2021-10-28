@@ -6,28 +6,34 @@ class BagUtil{
 		int size = sc.nextInt();
 		
 		Bag bag = new Bag(size);
-		BookDTO dto = new BookDTO();
-		dto.setBookId(15);
-		dto.setBookName("JAVA");
-		dto.setBookPrice(750.00);
-		dto.setBookType("Programming");
 		
-		BookDTO dto1 = new BookDTO();
-		dto1.setBookId(156);
-		dto1.setBookName("PYTHON");
-		dto1.setBookPrice(7550.00);
-		dto1.setBookType("Programming");
-		
-		bag.addBook(dto);
-		bag.addBook(dto1);
+		for(int i = 0; i < size; i++){
+			BookDTO dto = new BookDTO();
+			
+			System.out.println("Enter the book id");
+			dto.setBookId(sc.nextInt());
+			System.out.println("Enter the book name");
+			dto.setBookName(sc.next());
+			System.out.println("Enter the book price");
+			dto.setBookPrice(sc.nextDouble());
+			System.out.println("Enter the book type");
+			dto.setBookType(sc.next());
+
+			bag.addBook(dto);
+		}
 		
 		bag.printDetails();
 		
-		boolean update = bag.updateBookNameByBookId("UNIX", 15);
+		System.out.println("Enter the id for which you want to update the book name");
+		int id = sc.nextInt();
+		System.out.println("Enter the updated name");
+		String name = sc.next();
+		boolean update = bag.updateBookNameByBookId(name, id);
 		System.out.println("Updated: "+update);
 		bag.printDetails();
 		
-		boolean delete = bag.deleteById(156);
+		System.out.println("Enter the id for which you wnat to delete an entry");
+		boolean delete = bag.deleteById(sc.nextInt());
 		System.out.println("Deleted: "+delete);
 		bag.printDetails();
 	}

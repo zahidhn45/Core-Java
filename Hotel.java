@@ -20,7 +20,7 @@ class Hotel{
 		}
 		return isAdded;
 	}
-	public void addFoodItems(){
+	public void fetchFoodItems(){
 		for(int i=0; i<foodItems.length;  i++){
 			if(foodItems[i] != null){
 				System.out.println(foodItems[i].getFoodId()+ ", "+foodItems[i].getFoodName()+ ", "+foodItems[i].getFoodPrice()+ ", "+foodItems[i].getFoodType());

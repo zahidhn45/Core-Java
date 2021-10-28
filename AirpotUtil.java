@@ -6,28 +6,32 @@ class AirpotUtil{
 		int size = sc.nextInt();
 		
 		Airpot airpot =  new Airpot(size);
-		TerminalDTO dto = new TerminalDTO();
-		TerminalDTO dto1 = new TerminalDTO();
 		
-		dto.setTerminalArea(80000.00);
-		dto.setDepartureGate(18);
-		dto.setBaggageCarousels(7);
-		dto.setPasswordCheckStand(45);
+		for(int i = 0; i< size; i++){
+			TerminalDTO dto = new TerminalDTO();
+			System.out.println("Enter Terminal Area");
+			dto.setTerminalArea(sc.nextDouble());
+			System.out.println("Enter Number of Departure gate");
+			dto.setDepartureGate(sc.nextInt());
+			System.out.println("Enter bumber of Baggage Carousels");
+			dto.setBaggageCarousels(sc.nextInt());
+			System.out.println("Enter number of passport check stand");
+			dto.setPasswordCheckStand(sc.nextInt());
+			airpot.addTerminal(dto);
+		}
 		
-		dto1.setTerminalArea(82500.00);
-		dto1.setDepartureGate(25);
-		dto1.setBaggageCarousels(63);
-		dto1.setPasswordCheckStand(15);
-		
-		airpot.addTerminal(dto);
-		airpot.addTerminal(dto1);
 		airpot.printDetail();
 		
-		boolean update = airpot.updateGateByTerminalArea(80000.00, 20);
+		System.out.println("Enter Terminal area for which you want to update gate");
+		double area = sc.nextDouble();
+		System.out.println("Enter updated number of gate");
+		int gate = sc.nextInt();
+		boolean update = airpot.updateGateByTerminalArea(area, gate);
 		System.out.println("Update: "+update);
 		airpot.printDetail();
 		
-		boolean delete = airpot.deleteByGate(20);
+		System.out.println("Enter the number of gate for which you want to delete a entery");
+		boolean delete = airpot.deleteByGate(sc.nextInt());
 		System.out.println("Delete: "+delete);
 		airpot.printDetail();
 	}

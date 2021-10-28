@@ -6,26 +6,33 @@ class LaptopUtil{
 			int size = sc.nextInt();
 			
 			Laptop laptop = new Laptop(size);
-			OsDTO os = new OsDTO();
-			OsDTO os1 = new OsDTO();
 			
-			os.setOsName("Windows");
-			os.setOsSize(10);
-			os.setGammingExperience("Nice");
+			for(int i = 0; i < size; i++){
+				OsDTO os = new OsDTO();
+				
+				System.out.println("Enter os name");
+				os.setOsName(sc.next());
+				System.out.println("Enter os size");
+				os.setOsSize(sc.nextInt());
+				System.out.println("Enter os Gamming Experience");
+				os.setGammingExperience(sc.next());
+				
+				laptop.addOs(os);
+			}
 			
-			os1.setOsName("Linux");
-			os1.setOsSize(5);
-			os1.setGammingExperience("poor");
 			
-			laptop.addOs(os);
-			laptop.addOs(os1);
 			laptop.printDetails();
 			
-			boolean update = laptop.updategammingByName("Linux", "Good");
+			System.out.println("Enter os name for which gamming Exprerience is to be updated");
+			String name = sc.next();
+			System.out.println("Enter the updated os Gamming Experience");
+			String exp = sc.next();
+			boolean update = laptop.updategammingByName(name, exp);
 			System.out.println("Update: "+update);
 			laptop.printDetails();
 			
-			boolean delete = laptop.deleteByName("Windows");
+			System.out.println("Enter os name for which en entry has to be deleted");
+			boolean delete = laptop.deleteByName(sc.next());
 			System.out.println("Delete: "+delete);
 			laptop.printDetails();
 		}

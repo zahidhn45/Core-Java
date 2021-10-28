@@ -6,29 +6,37 @@ class HotelUtil{
 		int size = sc.nextInt();
 		
 		Hotel hotel = new Hotel(size);
-		FoodItemsDTO food = new FoodItemsDTO();
-		FoodItemsDTO food1 = new FoodItemsDTO();
 		
-		food.setFoodId(1);
-		food.setFoodName("Pasta");
-		food.setFoodPrice(106.20);
-		food.setFoodType("Chinese");
 		
-		food1.setFoodId(2);
-		food1.setFoodName("Gobi");
-		food1.setFoodPrice(60.20);
-		food1.setFoodType("Chinese");
+		for(int i = 0; i < size; i++){
+			FoodItemsDTO food = new FoodItemsDTO();
+			
+			System.out.println("Enter Food Id");
+			food.setFoodId(sc.nextInt());
+			System.out.println("Enter Food name");
+			food.setFoodName(sc.next());
+			System.out.println("Enter Food price");
+			food.setFoodPrice(sc.nextDouble());
+			System.out.println("Enter Food Type");
+			food.setFoodType(sc.next());
+			
+			hotel.addFoodItems(food);
+		}
 		
-		hotel.addFoodItems(food);
-		hotel.addFoodItems(food1);
-		hotel.addFoodItems();
 		
-		boolean update = hotel.updateFoodNameByFoodId(1, "Bryiyani");
+		hotel.fetchFoodItems();
+		
+		System.out.println("Enter Food Id to update Food name");
+		int id = sc.nextInt();
+		System.out.println("Enter updated Food name");
+		String name = sc.next();
+		boolean update = hotel.updateFoodNameByFoodId(id, name);
 		System.out.println("Update: "+update);
-		hotel.addFoodItems();
+		hotel.fetchFoodItems();
 		
-		boolean delete = hotel.DeleteByFoodId(2);
+		System.out.println("Enter Food id for which an entry to be deleted");
+		boolean delete = hotel.DeleteByFoodId(sc.nextInt());
 		System.out.println("Deleted: "+delete);
-		hotel.addFoodItems();
+		hotel.fetchFoodItems();
 	}
 }

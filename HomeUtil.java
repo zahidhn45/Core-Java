@@ -6,26 +6,31 @@ class HomeUtil{
 		int size = sc.nextInt();
 		
 		Home home = new Home(size);
-		FurnitureDTO dto = new FurnitureDTO();
-		FurnitureDTO dto1 = new FurnitureDTO();
 		
-		dto.setFurnitureName("Chair");
-		dto.setNumberOfFurniture(4);
-		dto.setFurnitureColor("Blue");
+		for(int i = 0; i < size; i++){
+			FurnitureDTO dto = new FurnitureDTO();
+			
+			System.out.println("Enter furniture name");
+			dto.setFurnitureName(sc.next());
+			System.out.println("Enter furniture Number");
+			dto.setNumberOfFurniture(sc.nextInt());
+			System.out.println("Enter furniture Color");
+			dto.setFurnitureColor(sc.next());
+			home.addFurniture(dto);
+		}
 		
-		dto1.setFurnitureName("Table");
-		dto1.setNumberOfFurniture(2);
-		dto1.setFurnitureColor("white");
-		
-		home.addFurniture(dto);
-		home.addFurniture(dto1);
 		home.printDetails();
 		
-		boolean update = home.updateColorByName("Chair", "Black");
+		System.out.println("Enter furniture name for updating Furniture color");
+		String name = sc.next();
+		System.out.println("Enter udated furniture color");
+		String color = sc.next();
+		boolean update = home.updateColorByName(name, color);
 		System.out.println("Updated: "+update);
 		home.printDetails();
 		
-		boolean delete = home.deleteByName("Table");
+		System.out.println("Enter furniture name for which an entery is to be deleted");
+		boolean delete = home.deleteByName(sc.next());
 		System.out.println("Deleted: "+delete);
 		home.printDetails();
 	}

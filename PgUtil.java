@@ -6,28 +6,34 @@ class PgUtil{
 		int size = sc.nextInt();
 		
 		Pg pg =  new Pg(size);
-		RoomsDTO  dto =  new RoomsDTO();
-		RoomsDTO  dto1 =  new RoomsDTO();
 		
-		dto.setRoomNumber(123);
-		dto.setRoomType("Double");
-		dto.setNumberOfBed(4);
-		dto.setCupboardAvailable(true);
+		for(int i = 0; i< size; i++){
+			RoomsDTO  dto =  new RoomsDTO();
+			
+			System.out.println("Enter Room number");
+			dto.setRoomNumber(sc.nextInt());
+			System.out.println("Enter Room Type");
+			dto.setRoomType(sc.next());
+			System.out.println("Enter number of bed in Room ");
+			dto.setNumberOfBed(sc.nextInt());
+			System.out.println("Enter cupboard available");
+			dto.setCupboardAvailable(sc.nextBoolean());
+			pg.addRoom(dto);
+		}
 		
-		dto1.setRoomNumber(456);
-		dto1.setRoomType("single");
-		dto1.setNumberOfBed(2);
-		dto1.setCupboardAvailable(true);
 		
-		pg.addRoom(dto);
-		pg.addRoom(dto1);
+		
 		pg.printDetails();
-		
-		boolean update = pg.updatePgTypeByPgRoomNo(123, "single");
+		System.out.println("Enter Room number for which you want to update room type");
+		int roomNo = sc.nextInt();
+		System.out.println("Enter updated Room type");
+		String type = sc.next();
+		boolean update = pg.updatePgTypeByPgRoomNo(roomNo, type);
 		System.out.println("Updated: "+update);
 		pg.printDetails();
 		
-		boolean delete = pg.deleteByRoomNumber(456);
+		System.out.println("Enter Room number for which you want an entry to be deleted");
+		boolean delete = pg.deleteByRoomNumber(sc.nextInt());
 		System.out.println("Deleted: "+delete);
 		pg.printDetails();
 		
