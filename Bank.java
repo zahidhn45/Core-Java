@@ -1,63 +1,29 @@
 class Bank{
-	AccountDTO[] account;
-	int index;
+	double rate;
+	Account account;
 	
-	public Bank(int size){
-		account = new AccountDTO[size];
+	public Bank(){
+		
 	}
 	
-	public boolean addAccount(AccountDTO account){
-		boolean isAdded  =  false;
-		System.out.println("Inside addAccount()");
-		if(account != null){
-			System.out.println("Adding account");
-			this.account[index++] = account;
-			isAdded = true;
+	public Bank(double rate){
+		this.rate = rate;
+	}
+	
+	public void rateOfIntrest(Account account){
+		System.out.println("inside rateOfIntrest()");
+		if(rate >= 9.5){
+			if(account != null){
+				this.account = account;
+				account.displayDetails();
+			} 
+			else{
+				System.out.println("Get a Account");
+			}
 		}
 		else{
-			System.out.println("can't add account");
-		}
-		return isAdded;
-	}
-	public void printDetails(){
-		for(int i = 0; i<account.length; i++){
-			if(account[i] != null){
-				System.out.println(account[i].getAccountId()+ ", "+account[i].getAccountName()+ ", "+account[i].getGender()+ ", "+account[i].getPhone()+ ", "+account[i].getRateOfIntrest());
-			}
+			System.out.println("Not a good bank...");
 		}
 	}
 	
-	public boolean updateAccountNameByAccountId(String name, int id){
-		System.out.println("Inside updateAccountNameByAccountId()");
-		boolean isUpdated =  false;
-		for(int i = 0; i<account.length; i++){
-			if(account[i] != null){
-				if(account[i].getAccountId() == id){
-					account[i].setAccountName(name);;
-					isUpdated = true;
-				}
-				else{
-					System.out.println("No such record found");
-				}
-			}
-			else{
-				System.out.println("Account not found");
-			}
-		}
-		return isUpdated;
-	}
-	
-	public boolean deleteById(int id){
-		System.out.println("Inside deleteById()");
-		boolean isDeleted = false;
-		for(int i = 0; i< account.length; i++){
-			if(account[i] != null){
-				if(account[i].getAccountId() == id){
-					account[i] = null;
-					isDeleted = true;
-				}
-			}
-		}
-		return isDeleted;
-	}
 }
