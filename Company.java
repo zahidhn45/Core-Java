@@ -54,7 +54,7 @@ class Company{
 		return isDeleted;
 	}
 
-	public ServiceDTO getServiceTypeById(String id) {
+	public ServiceDTO getServiceDetailsById(String id) {
 		System.out.println("Inside getServiceTypeById()");
 		ServiceDTO dto = null;
 		for (int i = 0; i < service.length; i++) {
@@ -67,5 +67,47 @@ class Company{
 			}
 		}
 		return dto;
+	}
+	public ServiceDTO getServiceDetailsByType(String type) {
+		System.out.println("Inside getServiceDetailsByType()");
+		ServiceDTO dto = null;
+		for (int i = 0; i < service.length; i++) {
+			if(type != null){
+				if(service[i].getServiceType().equals(type)){
+					dto = service[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public String getServiceIdByType(String type){
+		System.out.println("Inside getServiceIdByType()");
+		String id = null;
+		for (int i = 0; i < service.length; i++) {
+			if(type != null){
+				if(service[i].getServiceType().equals(type)){
+					id = service[i].getServiceRegisterId();
+				}
+			} else{
+				System.out.println("Not found");
+			}
+		}
+		return id;
+	}
+	public String getServiceTypeById(String id){
+		System.out.println("Inside getServiceIdByType()");
+		String type = null;
+		for (int i = 0; i < service.length; i++) {
+			if(id != null){
+				if(service[i].getServiceRegisterId().equals(id)){
+					type = service[i].getServiceType();
+				}
+			} else{
+				System.out.println("Not found");
+			}
+		}
+		return type;
 	}
 }

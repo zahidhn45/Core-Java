@@ -56,8 +56,8 @@ class Home{
 		return isDeleted;
 	}
 
-	public FurnitureDTO getFurnitureColorByName(String name) {
-		System.out.println("Inside getFurnitureColorByName()");
+	public FurnitureDTO getFurnitureDetailsByName(String name) {
+		System.out.println("Inside getFurnitureDetailsByName()");
 		FurnitureDTO dto = null;
 		for (int i = 0; i < fur.length; i++) {
 			if(name != null){
@@ -69,5 +69,69 @@ class Home{
 			}
 		}
 		return dto;
+	}
+	public FurnitureDTO getFurnitureDetailsByColor(String color) {
+		System.out.println("Inside getFurnitureDetailsByColor()");
+		FurnitureDTO dto = null;
+		for (int i = 0; i < fur.length; i++) {
+			if(color != null){
+				if(fur[i].getFurnitureColor().equals(color)){
+					dto = fur[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public FurnitureDTO getFurnitureDetailsByNoOfFur(int num) {
+		System.out.println("Inside getFurnitureDetailsByColor()");
+		FurnitureDTO dto = null;
+		for (int i = 0; i < fur.length; i++) {
+			if(num > 0){
+				if(fur[i].getNumberOfFurniture() == num){
+					dto = fur[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public String getNameByColor(String color) {
+		System.out.println("Inside getNameByColor()");
+		String name = null;
+		for (int i = 0; i < fur.length; i++) {
+			if(color != null){
+				if(fur[i].getFurnitureColor().equals(color)){
+					name = fur[i].getFurnitureName();
+				}
+			}
+		}
+		return name;
+	}
+	public String getColorByName(String name) {
+		System.out.println("Inside getColorByName()");
+		String color = null;
+		for (int i = 0; i < fur.length; i++) {
+			if(name != null){
+				if(fur[i].getFurnitureName().equals(name)){
+					color = fur[i].getFurnitureColor();
+				}
+			}
+		}
+		return color;
+	}
+	public int getNoOfFurnatureByName(String name) {
+		System.out.println("Inside getNoOfFurnatureByName()");
+		int numberofFurnature = 0;
+		for (int i = 0; i < fur.length; i++) {
+			if(name != null){
+				if(fur[i].getFurnitureName().equals(name)){
+					numberofFurnature = fur[i].getNumberOfFurniture();
+				}
+			}
+		}
+		return numberofFurnature;
 	}
 }

@@ -26,7 +26,10 @@ class PgUtil{
 			System.out.println("press 1 to get all room details");
 			System.out.println("Press 2 to update pg type name by pg room number");
 			System.out.println("press 3 to delete account by room number");
-			System.out.println("press 4 to get room type by room number");
+			System.out.println("press 4 to get room details by room number");
+			System.out.println("press 5 to get room details by room type");
+			System.out.println("press 6 to get room details by number of bed");
+			System.out.println("press 7 to get room type by room number");
 			int choice = sc.nextInt();
 
 			switch(choice){
@@ -48,7 +51,28 @@ class PgUtil{
 					break;
 				case 4:
 					System.out.println("Enter room number");
-					pg.getRoomTypeByRoomNumber(sc.nextInt());
+					RoomsDTO dto = pg.getRoomDetailsByRoomNumber(sc.nextInt());
+					if(dto != null){
+						System.out.println(dto.getRoomNumber()+" "+dto.getNumberOfBed()+" "+dto.getRoomType()+" "+dto.getCupboardAvailable());
+					}
+					break;
+				case 5:
+					System.out.println("Enter room type");
+					RoomsDTO dto1 = pg.getRoomDetailsByRoomType(sc.next());
+					if(dto1 != null){
+						System.out.println(dto1.getRoomNumber()+" "+dto1.getNumberOfBed()+" "+dto1.getRoomType()+" "+dto1.getCupboardAvailable());
+					}
+					break;
+				case 6:
+					System.out.println("Enter  Number of Bed");
+					RoomsDTO dto2 = pg.getRoomDetailsByRoomNoOfBed(sc.nextInt());
+					if(dto2 != null){
+						System.out.println(dto2.getRoomNumber()+" "+dto2.getNumberOfBed()+" "+dto2.getRoomType()+" "+dto2.getCupboardAvailable());
+					}
+					break;
+				case 7:
+					System.out.println("Enter room number");
+					System.out.println(pg.getRoomTypeByRoomNumber(sc.nextInt()));
 					break;
 				default:
 					System.out.println("Wrong choice.....");

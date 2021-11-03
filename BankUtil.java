@@ -29,7 +29,12 @@ class BankUtil{
 			System.out.println("press 1 to get all account details");
 			System.out.println("Press 2 to update account name by id");
 			System.out.println("press 3 to delete account by id");
-			System.out.println("press 4 to get account name by account id");
+			System.out.println("press 4 to get account details by account id");
+			System.out.println("press 5 to get account details by account name");
+			System.out.println("press 6 to get account name by account id");
+			System.out.println("press 7 to get account phone by account id");
+			System.out.println("press 8 to get account rate by account id");
+			System.out.println("press 9 to get account details by account rate");
 
 			int choice = sc.nextInt();
 			switch(choice){
@@ -51,7 +56,39 @@ class BankUtil{
 					break;
 				case 4:
 					System.out.println("Enter id");
-					bank.getAccountNameByAccountId(sc.nextInt());
+					AccountDTO dto = bank.getAccountDetailsByAccountId(sc.nextInt());
+					if(dto != null){
+						System.out.println(dto.getAccountId()+" "+dto.getAccountName()+" "+dto.getGender()+" "+dto.getPhone()+" "+dto.getRateOfIntrest());
+					}
+					break;
+				case 5:
+					System.out.println("Enter name");
+					AccountDTO dto1 = bank.getAccountDetailsByAccountName(sc.next());
+					if(dto1 != null){
+						System.out.println(dto1.getAccountId()+" "+dto1.getAccountName()+" "+dto1.getGender()+" "+dto1.getPhone()+" "+dto1.getRateOfIntrest());
+					}
+					break;
+				case 6:
+					System.out.println("Enter id");
+					String accName = bank.getAccountNameById(sc.nextInt());
+					System.out.println(accName);
+					break;
+				case 7:
+					System.out.println("Enter id");
+					long phone = bank.getAccountPhoneById(sc.nextInt());
+					System.out.println(phone);
+					break;
+				case 8:
+					System.out.println("Enter id");
+					double rate = bank.getAccountRateOfIntrestById(sc.nextInt());
+					System.out.println(rate);
+					break;
+				case 9:
+					System.out.println("Enter rate");
+					AccountDTO dto2 = bank.getAccountDetailsByAccountRate(sc.nextDouble());
+					if(dto2 != null){
+						System.out.println(dto2.getAccountId()+" "+dto2.getAccountName()+" "+dto2.getGender()+" "+dto2.getPhone()+" "+dto2.getRateOfIntrest());
+					}
 					break;
 				default:
 					System.out.println("Wrong choice.....");
@@ -60,6 +97,6 @@ class BankUtil{
 			System.out.println("Do you want to continue? Y/N");
 			text = sc.next();
 		} while(text.equals("Y"));
-		System.out.println("Thank you for Using the Food Items Application");
+		System.out.println("Thank you for Using the bank Application");
 	}
 }

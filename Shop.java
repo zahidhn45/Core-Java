@@ -54,8 +54,8 @@ class  Shop{
 		return isDeleted;
 	}
 
-	public ElectronicDeviceDTO getDeviceNameById(int id) {
-		System.out.println("Inside getOsNameByOsSize()");
+	public ElectronicDeviceDTO getDeviceDetailsById(int id) {
+		System.out.println("Inside getOsDetailsByOsSize()");
 		ElectronicDeviceDTO dto = null;
 		for (int i = 0; i < device.length; i++) {
 			if(id > 0){
@@ -67,5 +67,75 @@ class  Shop{
 			}
 		}
 		return dto;
+	}
+	public ElectronicDeviceDTO getDeviceDetailsByName(String name) {
+		System.out.println("Inside getDeviceDetailsByName()");
+		ElectronicDeviceDTO dto = null;
+		for (int i = 0; i < device.length; i++) {
+			if(name != null){
+				if(device[i].getDeviceName().equals(name)){
+					dto = device[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public ElectronicDeviceDTO getDeviceDetailsByColor(String color) {
+		System.out.println("Inscolore getDeviceDetailsByColor()");
+		ElectronicDeviceDTO dto = null;
+		for (int i = 0; i < device.length; i++) {
+			if(color != null){
+				if(device[i].getDeviceColor().equals(color)){
+					dto = device[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public ElectronicDeviceDTO getDeviceDetailsByPrice(double price) {
+		System.out.println("Inside getDeviceDetailsByPrice()");
+		ElectronicDeviceDTO dto = null;
+		for (int i = 0; i < device.length; i++) {
+			if(price > 0){
+				if(device[i].getDevicePrice() == price){
+					dto = device[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public String getDeviceNameByDeviceId(int id) {
+		System.out.println("Inside getDeviceNameByDeviceId()");
+		String name = null;
+		for (int i = 0; i < device.length; i++) {
+			if(id >0){
+				if(device[i].getDeviceId() == id){
+					name = device[i].getDeviceName();
+				}
+			}else{
+				System.out.println("Not found");
+			}
+		}
+		return name;
+	}
+	public double getDevicePricebyDeviceId(int id){
+		System.out.println("Inside getDevicePricebyDeviceId()");
+		double price = 0.0;
+		for (int i = 0; i < device.length; i++) {
+			if(id >0){
+				if(device[i].getDeviceId() == id){
+					price = device[i].getDevicePrice();
+				}
+			}else{
+				System.out.println("Not found");
+			}
+		}
+		return price;
 	}
 }

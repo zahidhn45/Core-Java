@@ -52,8 +52,8 @@ class Bag{
 		return isDeleted;
 	}
 
-	public BookDTO getBookNameByBookId(int id) {
-		System.out.println("Inside getBookNameByBookId() ");
+	public BookDTO getBookDetailsByBookId(int id) {
+		System.out.println("Inside getBookDetailsByBookId() ");
 		BookDTO dto = null;
 		for (int i = 0; i < book.length; i++) {
 			if(id > 0){
@@ -65,5 +65,75 @@ class Bag{
 			}
 		}
 		return dto;
+	}
+	public BookDTO getBookDetailsByBookName(String name) {
+		System.out.println("Inside getBookDetailsByBookName() ");
+		BookDTO dto = null;
+		for (int i = 0; i < book.length; i++) {
+			if(name != null){
+				if(book[i].getBookName().equals(name)){
+					dto = book[i];
+				} else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public BookDTO getBookDetailsByBookPrice(double price) {
+		System.out.println("Inside getBookDetailsByBookNPrice() ");
+		BookDTO dto = null;
+		for (int i = 0; i < book.length; i++) {
+			if(price > 0){
+				if(book[i].getBookPrice() == price){
+					dto = book[i];
+				} else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public BookDTO getBookDetailsByBookType(String type) {
+		System.out.println("Inside getBookDetailsByBookNType() ");
+		BookDTO dto = null;
+		for (int i = 0; i < book.length; i++) {
+			if(type != null){
+				if(book[i].getBookType().equals(type)){
+					dto = book[i];
+				} else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public String getBookNameByAppPrice(double price) {
+		System.out.println("Inside getAppNameByAppPrice() ");
+		String name = null;
+		for (int i = 0; i < book.length; i++) {
+			if(price > 0){
+				if(book[i].getBookPrice() == price){
+					name =  book[i].getBookName();
+				}
+			}else{
+				System.out.println("Not found");
+			}
+		}
+		return name;
+	}
+	public String getBookTypeByBookName(String name) {
+		System.out.println("Inside getAppNameByAppPrice() ");
+		String type = null;
+		for (int i = 0; i < book.length; i++) {
+			if(name != null){
+				if(book[i].getBookName().equals(name)){
+					type =  book[i].getBookName();
+				}
+			}else{
+				System.out.println("Not found");
+			}
+		}
+		return type;
 	}
 }

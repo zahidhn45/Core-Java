@@ -22,7 +22,10 @@ class CompanyUtil{
 			System.out.println("press 1 to get all service details");
 			System.out.println("Press 2 to update service type name by id");
 			System.out.println("press 3 to delete service by id");
-			System.out.println("press 4 to get service type by service id");
+			System.out.println("press 4 to get service details by service id");
+			System.out.println("press 5 to get service details by service type");
+			System.out.println("press 6 to get service id by service type");
+			System.out.println("press 7 to get service type by service id");
 			int choice = sc.nextInt();
 
 			switch(choice){
@@ -44,7 +47,25 @@ class CompanyUtil{
 					break;
 				case 4:
 					System.out.println("Enter id");
-					company.getServiceTypeById(sc.next());
+					ServiceDTO dto = company.getServiceDetailsById(sc.next());
+					if(dto != null){
+						System.out.println(dto.getServiceRegisterId()+" "+dto.getServiceType());
+					}
+					break;
+				case 5:
+					System.out.println("Enter service type");
+					ServiceDTO dto1 = company.getServiceDetailsByType(sc.next());
+					if(dto1 != null){
+						System.out.println(dto1.getServiceRegisterId()+" "+dto1.getServiceType());
+					}
+					break;
+				case 6:
+					System.out.println("Enter service type");
+					System.out.println(company.getServiceIdByType(sc.next()));
+					break;
+				case 7:
+					System.out.println("Enter service id");
+					System.out.println(company.getServiceTypeById(sc.next()));
 					break;
 				default:
 					System.out.println("Wrong choice.....");

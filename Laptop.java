@@ -54,7 +54,7 @@ class Laptop{
 		return isDeleted;
 	}
 
-	public OsDTO getOsNameByOsSize(int size) {
+	public OsDTO getOsDetailsByOsSize(int size) {
 		System.out.println("Inside getOsNameByOsSize()");
 		OsDTO dto = null;
 		for (int i = 0; i < os.length; i++) {
@@ -67,5 +67,61 @@ class Laptop{
 			}
 		}
 		return dto;
+	}
+	public OsDTO getOsDetailsByOsName(String name) {
+		System.out.println("Inside getOsDetailsByOsName()");
+		OsDTO dto = null;
+		for (int i = 0; i < os.length; i++) {
+			if(name != null){
+				if(os[i].getOsName().equals(name)){
+					dto = os[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public OsDTO getOsDetailsByOsGamming(String exp) {
+		System.out.println("Inside getOsDetailsByOsGamming()");
+		OsDTO dto = null;
+		for (int i = 0; i < os.length; i++) {
+			if(exp != null){
+				if(os[i].getGammingExperince().equals(exp)){
+					dto = os[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public String getOsNameByOsSize(int size){
+		System.out.println("Inside getOsNameByOsSize()");
+		String name = null;
+		for (int i = 0; i < os.length; i++) {
+			if(size > 0){
+				if(os[i].getOsSize() == size){
+					name = os[i].getOsName();
+				}
+			} else{
+				System.out.println("Not Found");
+			}
+		}
+		return name;
+	}
+	public int getOsSizeByOsName(String name){
+		System.out.println("Inside getOsNameByOsname()");
+		int size = 0;
+		for (int i = 0; i < os.length; i++) {
+			if(name != null){
+				if(os[i].getOsName().equals(name)){
+					size = os[i].getOsSize();
+				}
+			} else{
+				System.out.println("Not Found");
+			}
+		}
+		return size;
 	}
 }

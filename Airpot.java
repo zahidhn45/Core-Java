@@ -62,7 +62,7 @@ class Airpot{
 		return isDeleted;
 	}
 
-	public TerminalDTO getAreaByGateNo(int gate) {
+	public TerminalDTO getTerminalDetailsByGateNo(int gate) {
 		System.out.println("Inside getAreaByGateNo()");
 		TerminalDTO dto = null;
 		for (int i = 0; i < terminal.length; i++) {
@@ -75,5 +75,78 @@ class Airpot{
 			}
 		}
 		return dto;
+	}
+	public TerminalDTO getTerminalDetailsByArea(double area) {
+		System.out.println("Inside getTerminalDetailsByArea()");
+		TerminalDTO dto = null;
+		for (int i = 0; i < terminal.length; i++) {
+			if(area > 0){
+				if(terminal[i].getTerminalArea() == area){
+					dto = terminal[i];
+				}else{
+					System.out.println("Not available");
+				}
+			}
+		}
+		return dto;
+	}
+	public TerminalDTO getTerminalDetailsByCoursoul(int courosel) {
+		System.out.println("Inside getTerminalDetailsByArea()");
+		TerminalDTO dto = null;
+		for (int i = 0; i < terminal.length; i++) {
+			if(courosel > 0){
+				if(terminal[i].getBaggageCarousels() == courosel){
+					dto = terminal[i];
+				}else{
+					System.out.println("Not available");
+				}
+			}
+		}
+		return dto;
+	}
+	public double getAreabyGate(int gate){
+		System.out.println("Inside getAreabyGate()");
+		double area = 0.0;
+		for (int i = 0; i < terminal.length; i++) {
+			if(gate > 0){
+				if(terminal[i].getDepartureGate() == gate){
+					area =  terminal[i].getTerminalArea();
+				}
+			}
+			else{
+				System.out.println("Not found");
+			}
+		}
+		return area;
+	}
+	public int getcorouselbyGate(int gate){
+		System.out.println("Inside getcorouselbyGate()");
+		int corousel = 0;
+		for (int i = 0; i < terminal.length; i++) {
+			if(gate > 0){
+				if(terminal[i].getDepartureGate() == gate){
+					corousel =  terminal[i].getBaggageCarousels();
+				}
+			}
+			else{
+				System.out.println("Not found");
+			}
+		}
+		return corousel;
+	}
+	public double getArealbyPassportCheckStand(int check){
+		System.out.println("Inside getcorouselbyGate()");
+		double area = 0.0;
+		for (int i = 0; i < terminal.length; i++) {
+			if(area > 0){
+				if(terminal[i].getPasswordCheckStand() == check){
+					area =  terminal[i].getTerminalArea();
+				}
+			}
+			else{
+				System.out.println("Not found");
+			}
+		}
+		return area;
 	}
 }

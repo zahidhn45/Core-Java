@@ -27,7 +27,12 @@ class ShopUtil{
 			System.out.println("press 1 to get all device details");
 			System.out.println("Press 2 to update device name by id");
 			System.out.println("press 3 to delete device by id");
-			System.out.println("press 4 to get device name by account id");
+			System.out.println("press 4 to get device details by device id");
+			System.out.println("press 5 to get device details by device name");
+			System.out.println("press 6 to get device details by device color");
+			System.out.println("press 7 to get device details by device price");
+			System.out.println("press 8 to get device name by device id");
+			System.out.println("press 9 to get device price by device id");
 			int choice = sc.nextInt();
 
 			switch(choice){
@@ -49,7 +54,39 @@ class ShopUtil{
 					break;
 				case 4:
 					System.out.println("Enter device id");
-					shop.getDeviceNameById(sc.nextInt());
+					ElectronicDeviceDTO dto = shop.getDeviceDetailsById(sc.nextInt());
+					if(dto != null){
+						System.out.println(dto.getDeviceId()+" "+dto.getDeviceName()+" "+dto.getDeviceColor()+" "+dto.getDevicePrice());
+					}
+					break;
+				case 5:
+					System.out.println("Enter device Name");
+					ElectronicDeviceDTO dto1 = shop.getDeviceDetailsByName(sc.next());
+					if(dto1 != null){
+						System.out.println(dto1.getDeviceId()+" "+dto1.getDeviceName()+" "+dto1.getDeviceColor()+" "+dto1.getDevicePrice());
+					}
+					break;
+				case 6:
+					System.out.println("Enter device color");
+					ElectronicDeviceDTO dto2 = shop.getDeviceDetailsByColor(sc.next());
+					if(dto2 != null){
+						System.out.println(dto2.getDeviceId()+" "+dto2.getDeviceName()+" "+dto2.getDeviceColor()+" "+dto2.getDevicePrice());
+					}
+					break;
+				case 7:
+					System.out.println("Enter device price");
+					ElectronicDeviceDTO dto3 = shop.getDeviceDetailsByPrice(sc.nextDouble());
+					if(dto3 != null){
+						System.out.println(dto3.getDeviceId()+" "+dto3.getDeviceName()+" "+dto3.getDeviceColor()+" "+dto3.getDevicePrice());
+					}
+					break;
+				case 8:
+					System.out.println("Enter device id");
+					System.out.println(shop.getDeviceNameByDeviceId(sc.nextInt()));
+					break;
+				case 9:
+					System.out.println("Enter device id");
+					System.out.println(shop.getDevicePricebyDeviceId(sc.nextInt()));
 					break;
 				default:
 					System.out.println("Wrong choice.....");

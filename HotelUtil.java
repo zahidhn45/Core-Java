@@ -25,7 +25,12 @@ class HotelUtil{
 			System.out.println("press 1 to get all food item details");
 			System.out.println("Press 2 to update food name name by id");
 			System.out.println("press 3 to delete fooditem by id");
-			System.out.println("press 4 to get food name by account id");
+			System.out.println("press 4 to get food details by food id");
+			System.out.println("press 5 to get food details by food name");
+			System.out.println("press 6 to get food details by food type");
+			System.out.println("press 7 to get food details by food price");
+			System.out.println("press 8 to get food name by food id");
+			System.out.println("press 9 to get food price by food name");
 			int choice = sc.nextInt();
 			switch(choice){
 				case 1:
@@ -47,9 +52,41 @@ class HotelUtil{
 					break;
 				case 4:
 					System.out.println("Enter id");
-					hotel.getFoodNameById(sc.nextInt());
+					FoodItemsDTO dto = hotel.getFoodDetailsById(sc.nextInt());
+					if(dto != null){
+						System.out.println(dto.getFoodId()+" "+dto.getFoodName()+" "+dto.getFoodPrice()+" "+dto.getFoodType());
+					}
 					break;
-					default:
+				case 5:
+					System.out.println("Enter name");
+					FoodItemsDTO dto1 = hotel.getFoodDetailsByName(sc.next());
+					if(dto1 != null){
+						System.out.println(dto1.getFoodId()+" "+dto1.getFoodName()+" "+dto1.getFoodPrice()+" "+dto1.getFoodType());
+					}
+					break;
+				case 6:
+					System.out.println("Enter food type");
+					FoodItemsDTO dto2 = hotel.getFoodDetailsByType(sc.next());
+					if(dto2 != null){
+						System.out.println(dto2.getFoodId()+" "+dto2.getFoodName()+" "+dto2.getFoodPrice()+" "+dto2.getFoodType());
+					}
+					break;
+				case 7:
+					System.out.println("Enter food price");
+					FoodItemsDTO dto3 = hotel.getFoodDetailsByPrice(sc.nextDouble());
+					if(dto3 != null){
+						System.out.println(dto3.getFoodId()+" "+dto3.getFoodName()+" "+dto3.getFoodPrice()+" "+dto3.getFoodType());
+					}
+					break;
+				case 8:
+					System.out.println("Enter food id");
+					System.out.println(hotel.getFoodNameByFoodId(sc.nextInt()));
+					break;
+				case 9:
+					System.out.println("Enter food name");
+					System.out.println(hotel.getFoodPriceByFoodName(sc.next()));
+					break;
+				default:
 					System.out.println("Wrong choice.....");
 					break;
 			}

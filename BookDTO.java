@@ -4,8 +4,6 @@ public class BookDTO{
 	private double bookPrice;
 	private String bookType;
 	
-
-	
 	public void setBookId(int bookId){
 		this.bookId = bookId;
 	}

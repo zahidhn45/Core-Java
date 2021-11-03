@@ -53,8 +53,8 @@ class Pg{
 		return isDeleted;
 	}
 
-	public RoomsDTO getRoomTypeByRoomNumber(int num) {
-		System.out.println("Inside getOsNameByOsSize()");
+	public RoomsDTO getRoomDetailsByRoomNumber(int num) {
+		System.out.println("Inside getRoomDetailsByRoomNumber()");
 		RoomsDTO dto = null;
 		for (int i = 0; i < room.length; i++) {
 			if(num > 0){
@@ -66,5 +66,47 @@ class Pg{
 			}
 		}
 		return dto;
+	}
+	public RoomsDTO getRoomDetailsByRoomType(String type) {
+		System.out.println("Inside getRoomDetailsByRoomType()");
+		RoomsDTO dto = null;
+		for (int i = 0; i < room.length; i++) {
+			if(type != null){
+				if(room[i].getRoomType().equals(type)){
+					dto = room[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public RoomsDTO getRoomDetailsByRoomNoOfBed(int numOfBed) {
+		System.out.println("Inside getRoomDetailsByRoomType()");
+		RoomsDTO dto = null;
+		for (int i = 0; i < room.length; i++) {
+			if(numOfBed > 0){
+				if(room[i].getNumberOfBed() == numOfBed){
+					dto = room[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public String getRoomTypeByRoomNumber(int roomNo) {
+		System.out.println("Inside getRoomTypeByRoomNumber()");
+		String roomType = null;
+		for (int i = 0; i < room.length; i++) {
+			if(roomNo > 0){
+				if(room[i].getRoomNumber() == roomNo){
+					roomType = room[i].getRoomType();
+				}
+			}else{
+				System.out.println("Not Found");
+			}
+		}
+		return roomType;
 	}
 }

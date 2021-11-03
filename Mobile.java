@@ -56,7 +56,7 @@ class Mobile{
 		}
 		return isDeleted;
 	}
-	public ApplicationDTO getAppNameByAppType(String type) {
+	public ApplicationDTO getAppDetailsByAppType(String type) {
 		System.out.println("Inside getOsNameByOsSize()");
 		ApplicationDTO dto = null;
 		for (int i = 0; i < app.length; i++) {
@@ -69,5 +69,75 @@ class Mobile{
 			}
 		}
 		return dto;
+	}
+	public ApplicationDTO getAppDetailsByAppName(String name) {
+		System.out.println("Inside getAppDetailsByAppName()");
+		ApplicationDTO dto = null;
+		for (int i = 0; i < app.length; i++) {
+			if(name != null){
+				if(app[i].getAppName().equals(name)){
+					dto = app[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public ApplicationDTO getAppDetailsByAppSize(int size) {
+		System.out.println("Inside getAppDetailsByAppSize()");
+		ApplicationDTO dto = null;
+		for (int i = 0; i < app.length; i++) {
+			if(size > 0){
+				if(app[i].getAppSize() == size){
+					dto = app[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public ApplicationDTO getAppDetailsByAppRating(double rating) {
+		System.out.println("Inside getAppDetailsByAppRating()");
+		ApplicationDTO dto = null;
+		for (int i = 0; i < app.length; i++) {
+			if(rating > 0){
+				if(app[i].getAppRating() == rating){
+					dto = app[i];
+				}else{
+					System.out.println("Not found");
+				}
+			}
+		}
+		return dto;
+	}
+	public String getAppNameByAppType(String type){
+		System.out.println("Inside getAppNameByAppType()");
+		String name = null;
+		for (int i = 0; i < app.length; i++) {
+			if(type != null){
+				if(app[i].getAppType().equals(type)){
+					name = app[i].getAppName();
+				}
+			} else{
+				System.out.println("Not found");
+			}
+		}
+		return name;
+	}
+	public String getAppTypeByAppName(String name){
+		System.out.println("Inside getAppTypeByAppName()");
+		String type = null;
+		for (int i = 0; i < app.length; i++) {
+			if(name != null){
+				if(app[i].getAppName().equals(name)){
+					type = app[i].getAppType();
+				}
+			} else{
+				System.out.println("Not found");
+			}
+		}
+		return type;
 	}
 }

@@ -26,7 +26,12 @@ class BagUtil{
 			System.out.println("press 1 to get all books details");
 			System.out.println("Press 2 to update book name by id");
 			System.out.println("press 3 to delete book by id");
-			System.out.println("press 4 to get book name by account id");
+			System.out.println("press 4 to get book details by book id");
+			System.out.println("press 5 to get book details by book name");
+			System.out.println("press 6 to get book details by book price");
+			System.out.println("press 7 to get book details by book type");
+			System.out.println("press 8 to get book name by book price");
+			System.out.println("press 9 to get book type by book name");
 			int choice = sc.nextInt();
 			
 			switch(choice){
@@ -48,7 +53,39 @@ class BagUtil{
 					break;
 				case 4:
 					System.out.println("Enter id");
-					bag.getBookNameByBookId(sc.nextInt());
+					BookDTO dto = bag.getBookDetailsByBookId(sc.nextInt());
+					if(dto != null){
+						System.out.println(dto.getBookId()+" "+dto.getBookName()+" "+dto.getBookPrice()+" "+dto.getBookType());
+					}
+					break;
+				case 5:
+					System.out.println("Enter book name");
+					BookDTO dto1 = bag.getBookDetailsByBookName(sc.next());
+					if(dto1 != null){
+						System.out.println(dto1.getBookId()+" "+dto1.getBookName()+" "+dto1.getBookPrice()+" "+dto1.getBookType());
+					}
+					break;
+				case 6:
+					System.out.println("Enter book price");
+					BookDTO dto2 = bag.getBookDetailsByBookPrice(sc.nextDouble());
+					if(dto2 != null){
+						System.out.println(dto2.getBookId()+" "+dto2.getBookName()+" "+dto2.getBookPrice()+" "+dto2.getBookType());
+					}
+					break;
+				case 7:
+					System.out.println("Enter book type");
+					BookDTO dto3 = bag.getBookDetailsByBookType(sc.next());
+					if(dto3 != null){
+						System.out.println(dto3.getBookId()+" "+dto3.getBookName()+" "+dto3.getBookPrice()+" "+dto3.getBookType());
+					}
+					break;
+				case 8:
+					System.out.println("Enter book price");
+					System.out.println(bag.getBookNameByAppPrice(sc.nextDouble()));
+					break;
+				case 9:
+					System.out.println("Enter book name");
+					System.out.println(bag.getBookTypeByBookName(sc.next()));
 					break;
 				default:
 					System.out.println("Wrong choice.....");
