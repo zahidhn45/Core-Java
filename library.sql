@@ -80,11 +80,13 @@ SELECT * FROM Book_Details WHERE Book_Name IN('Bad Blood', 'Light', 'Darkmans');
 SELECT * FROM Book_Details WHERE Book_Price BETWEEN 500 AND 700;
 SELECT Book_Price AS Book_Amount FROM Book_DetaiLs WHERE Book_Price > 500;
 
+
+select * from Book_Details;
 SELECT * FROM Book_Details WHERE Book_Name LIKE '%potter';
-SELECT * FROM Book_Details WHERE Book_Name LIKE 'THE%';
+SELECT * FROM Book_Details WHERE Book_Name LIKE 'THE%'; 
 SELECT * FROM Book_Details WHERE Book_Name LIKE '%of%';
 SELECT * FROM Book_Details WHERE Book_Name LIKE '_h%';
-SELECT * FROM Book_Details WHERE Book_Name LIKE '_a_a%';
+SELECT * FROM Book_Details WHERE Book_Name LIKE '___a_a%';
 
 -- date and time function
 
@@ -124,4 +126,20 @@ INSERT INTO Book_Details VALUE
 SELECT * FROM Book_Details;
 SELECT Book_Author, COUNT(Book_Name) AS Count_Book_Author FROM Book_details GROUP BY Book_Author;
 SELECT Book_Name, COUNT(Book_Price) AS Count_Book_Price FROM Book_Details GROUP BY Book_Price;
-SELECT Publication_Year, COUNT(Book_Name) AS count_book_name, Book_Name FROM Book_Details WHERE Publication_Year > 2005 GROUP BY Publication_Year;
+SELECT Publication_Year, COUNT(Book_Name)
+ AS count_book_name, Book_Name
+ FROM Book_Details
+ WHERE Publication_Year > 2005 
+ GROUP BY Publication_Year;
+ 
+SELECT Book_Name, COUNT(Book_Name) AS Count_Book FROM Book_Details GROUP BY Book_Name;
+SELECT Publication_Year, MAX(Book_Price) AS max_in_year FROM Book_Details GROUP BY Publication_Year;
+SELECT Publication_Year, MIN(Book_Price) AS min_in_year FROM Book_Details GROUP BY Publication_year;
+SELECT Book_Author, Publication_Year, COUNT(Book_Name) AS no_of_Book FROM Book_Details GROUP BY Book_Author, Publication_Year;
+SELECT Publication_Year, MAX(Book_Price) as maximum, MAX(Book_Price) AS minimum FROM Book_Details GROUP BY Publication_Year;
+SELECT Publication_Year,SUM(Book_Price) AS Total FROM Book_Details GROUP BY Publication_Year;
+SELECT Publication_Year,SUM(Book_Price) AS Total From Book_Details GROUP BY Publication_Year ORDER BY Publication_Year;
+SELECT Publication_Year, SUM(Book_Price) AS Total From Book_Details GROUP BY Publication_Year HAVING Publication_Year > 2005;
+SELECT Volume, COUNT(Book_Name) AS Book_Count FROM Book_Details GROUP BY Volume HAVING Book_Count > 2;
+SELECT Book_Name, MIN(Book_Price) AS minimum FROM Book_Details GROUP BY Book_Author HAVING minimum < 500;
+
